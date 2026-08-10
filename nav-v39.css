@@ -1,0 +1,210 @@
+/* GCS primary navigation - Update 39
+   One consistent header geometry across every page. */
+.site-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:1000!important;
+  height:auto!important;
+  min-height:82px!important;
+  display:block!important;
+  overflow:visible!important;
+  background:#fff!important;
+  border-bottom:1px solid #e3ebf2!important;
+}
+.site-header .container.header-inner{
+  width:min(1320px,calc(100% - 40px))!important;
+  max-width:1320px!important;
+  height:82px!important;
+  min-height:82px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:22px!important;
+  overflow:visible!important;
+}
+.site-header .brand{
+  display:flex!important;
+  align-items:center!important;
+  flex:0 0 auto!important;
+  margin:0!important;
+  padding:0!important;
+}
+.site-header .brand img{
+  display:block!important;
+  width:142px!important;
+  height:auto!important;
+  max-height:62px!important;
+  object-fit:contain!important;
+}
+.site-header .nav{
+  margin-left:auto!important;
+  display:flex!important;
+  flex-flow:row nowrap!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:clamp(10px,1.2vw,23px)!important;
+  overflow:visible!important;
+  min-width:0!important;
+  line-height:1.2!important;
+}
+.site-header .nav > a,
+.site-header .nav-dropdown > summary{
+  flex:0 0 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  height:82px!important;
+  margin:0!important;
+  padding:2px 0 0!important;
+  border:0!important;
+  border-bottom:3px solid transparent!important;
+  color:#082b50!important;
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+  cursor:pointer!important;
+  list-style:none!important;
+  box-sizing:border-box!important;
+}
+.site-header .nav-dropdown > summary::-webkit-details-marker{display:none!important}
+.site-header .nav-dropdown > summary::after{
+  content:""!important;
+  display:inline-block!important;
+  width:7px!important;
+  height:7px!important;
+  margin-left:8px!important;
+  border-right:2px solid currentColor!important;
+  border-bottom:2px solid currentColor!important;
+  transform:translateY(-2px) rotate(45deg)!important;
+  transition:transform .16s ease!important;
+}
+.site-header .nav > a:hover,
+.site-header .nav > a:focus-visible,
+.site-header .nav > a.active,
+.site-header .nav-dropdown > summary:hover,
+.site-header .nav-dropdown > summary:focus-visible,
+.site-header .nav-dropdown.active > summary{
+  color:#4aa514!important;
+  border-bottom-color:#55ae1d!important;
+}
+.site-header .nav-dropdown{
+  position:relative!important;
+  flex:0 0 auto!important;
+  height:82px!important;
+  margin:0!important;
+  padding:0!important;
+}
+.site-header .nav-dropdown-menu{
+  display:none!important;
+  position:absolute!important;
+  z-index:2000!important;
+  top:72px!important;
+  left:50%!important;
+  min-width:215px!important;
+  transform:translateX(-50%)!important;
+  margin:0!important;
+  padding:9px!important;
+  border:1px solid rgba(5,42,83,.14)!important;
+  border-radius:8px!important;
+  background:#fff!important;
+  box-shadow:0 15px 35px rgba(5,42,83,.18)!important;
+}
+/* Desktop: JavaScript controls the native <details> open state. Keeping one
+   source of truth avoids hover/click races and ensures the submenu remains
+   available while the pointer moves from the label into the menu. */
+@media (min-width:901px){
+  .site-header .nav-dropdown[open] > .nav-dropdown-menu{
+    display:block!important;
+  }
+  .site-header .nav-dropdown[open] > summary::after{
+    transform:translateY(2px) rotate(225deg)!important;
+  }
+}
+.site-header .nav-dropdown-menu a{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  margin:0!important;
+  padding:11px 13px!important;
+  border:0!important;
+  border-radius:5px!important;
+  color:#0b315c!important;
+  text-decoration:none!important;
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  line-height:1.2!important;
+  white-space:nowrap!important;
+}
+.site-header .nav-dropdown-menu a:hover,
+.site-header .nav-dropdown-menu a:focus-visible{
+  background:#eef6e9!important;
+  color:#3f8515!important;
+}
+.site-header .menu-button,
+.site-header .mobile-toggle{
+  display:none!important;
+  margin-left:auto!important;
+  border:0!important;
+  background:transparent!important;
+  color:#082b50!important;
+  font-size:28px!important;
+}
+@media (max-width:1180px) and (min-width:901px){
+  .site-header .container.header-inner{width:min(100% - 28px,1320px)!important;gap:14px!important}
+  .site-header .brand img{width:125px!important}
+  .site-header .nav{gap:9px!important}
+  .site-header .nav > a,
+  .site-header .nav-dropdown > summary{font-size:12px!important}
+}
+@media (max-width:900px){
+  .site-header{min-height:74px!important}
+  .site-header .container.header-inner{height:74px!important;min-height:74px!important;width:min(100% - 30px,1320px)!important}
+  .site-header .brand img{width:125px!important;max-height:54px!important}
+  .site-header .menu-button,
+  .site-header .mobile-toggle{display:block!important}
+  .site-header .nav{
+    display:none!important;
+    position:absolute!important;
+    top:74px!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    max-height:calc(100vh - 74px)!important;
+    overflow:auto!important;
+    margin:0!important;
+    padding:12px 22px 18px!important;
+    border-top:1px solid #e3ebf2!important;
+    background:#fff!important;
+    box-shadow:0 14px 28px rgba(5,42,83,.16)!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:0!important;
+  }
+  .site-header .nav.open{display:flex!important}
+  .site-header .nav > a,
+  .site-header .nav-dropdown > summary{
+    width:100%!important;
+    height:auto!important;
+    padding:13px 2px!important;
+    border-bottom:1px solid rgba(5,42,83,.11)!important;
+    font-size:14px!important;
+  }
+  .site-header .nav-dropdown{width:100%!important;height:auto!important}
+  .site-header .nav-dropdown[open] > .nav-dropdown-menu{display:block!important}
+  .site-header .nav-dropdown-menu{
+    position:static!important;
+    transform:none!important;
+    min-width:0!important;
+    margin:0 0 8px 12px!important;
+    padding:4px 0 4px 12px!important;
+    border:0!important;
+    border-left:3px solid #55ae1d!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+}

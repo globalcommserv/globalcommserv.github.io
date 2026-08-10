@@ -1,0 +1,10 @@
+GCS Website Version 2.0 - Production Package
+
+Upload the CONTENTS of this folder to the root of the GitHub repository.
+
+GitHub Pages settings:
+- Source: Deploy from a branch
+- Branch: main
+- Folder: / (root)
+
+This package contains fewer than 100 files, so it can be uploaded in one batch through GitHub's web uploader.
