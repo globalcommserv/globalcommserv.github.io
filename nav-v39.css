@@ -70,6 +70,13 @@
   list-style:none!important;
   box-sizing:border-box!important;
 }
+/* The shared border-bottom below is the only navigation selection indicator.
+   Older page stylesheets defined an animated link pseudo-element; suppress it
+   here so every page uses the same underline treatment. */
+.site-header .nav a::after{
+  content:none!important;
+  display:none!important;
+}
 .site-header .nav-dropdown > summary::-webkit-details-marker{display:none!important}
 .site-header .nav-dropdown > summary::after{
   content:""!important;

@@ -14,10 +14,8 @@ async function loadShortcodes() {
     }
 
     const markup = await response.text();
-    const template = document.createElement('template');
-    template.innerHTML = markup;
     placeholders.forEach((placeholder) => {
-      placeholder.replaceWith(template.content.cloneNode(true));
+      placeholder.innerHTML = markup;
     });
   }));
 }
