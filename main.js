@@ -1,4 +1,44 @@
-document.addEventListener('DOMContentLoaded', () => {
+const SHORTCODES = [
+  { selector: 'site-header', source: 'header.html' },
+  { selector: 'site-footer', source: 'footer.html' }
+];
+
+async function loadShortcodes() {
+  await Promise.all(SHORTCODES.map(async ({ selector, source }) => {
+    const placeholders = document.querySelectorAll(selector);
+    if (!placeholders.length) return;
+
+    const response = await fetch(source);
+    if (!response.ok) {
+      throw new Error(`Unable to load ${source}: ${response.status}`);
+    }
+
+    const markup = await response.text();
+    const template = document.createElement('template');
+    template.innerHTML = markup;
+    placeholders.forEach((placeholder) => {
+      placeholder.replaceWith(template.content.cloneNode(true));
+    });
+  }));
+}
+
+function setActiveNavigation() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+  document.querySelectorAll('[data-active-pages]').forEach((link) => {
+    const activePages = link.dataset.activePages.split(' ');
+    const isActive = activePages.includes(currentPage);
+    link.classList.toggle('active', isActive);
+
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+function initializeSite() {
   const mobileToggle = document.querySelector('.mobile-toggle, .menu-button');
   const nav = document.querySelector('.nav');
   const desktop = window.matchMedia('(min-width: 901px)');
@@ -85,4 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-year]').forEach((element) => {
     element.textContent = new Date().getFullYear();
   });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await loadShortcodes();
+    setActiveNavigation();
+    initializeSite();
+  } catch (error) {
+    console.error('Shortcode loading failed:', error);
+  }
 });
