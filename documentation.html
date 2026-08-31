@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="gcs-icon.png">
+    <title>GCS | Website Documentation</title>
+    <meta name="description" content="A rough handover guide to the Global Commerce and Services website codebase, hosting, and domain configuration.">
+    <link rel="stylesheet" href="main-v17.css">
+    <link rel="stylesheet" href="nav-v39.css?v=40">
+    <style>
+      .documentation-hero{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:72px 0 76px}
+      .documentation-hero .eyebrow{color:#d8effb}
+      .documentation-hero h1{font-size:clamp(42px,5vw,64px);line-height:1.04;letter-spacing:-.05em;margin:18px 0 12px}
+      .documentation-frontmatter{display:flex;gap:18px;flex-wrap:wrap;margin:0;color:#e4eff8;font-size:16px;font-weight:800}
+      .documentation-frontmatter span+span{padding-left:18px;border-left:1px solid rgba(255,255,255,.42)}
+      .documentation-body{background:var(--light);padding:64px 0 86px}
+      .documentation-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start}
+      .documentation-content{min-width:0;background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(26px,4vw,56px);box-shadow:var(--shadow)}
+      .documentation-content section+section{margin-top:58px;padding-top:52px;border-top:1px solid var(--line)}
+      .documentation-content h2{margin:0 0 24px;color:var(--navy2);font-size:clamp(29px,3.2vw,40px);line-height:1.1;letter-spacing:-.035em}
+      .documentation-content h3{margin:38px 0 16px;color:#145675;font-size:clamp(22px,2.4vw,29px);line-height:1.15;letter-spacing:-.02em}
+      .documentation-content p{margin:0 0 25px;color:var(--ink);font-size:17px}
+      .documentation-content p:last-child{margin-bottom:0}
+      .documentation-content a{color:#2d7895;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+      .documentation-content a:hover{color:var(--blue)}
+      .documentation-toc{background:var(--navy);color:#dbe7f2;border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+      .documentation-toc h2{color:#fff;font-size:18px;margin:0 0 14px}
+      .documentation-toc ol{margin:0;padding-left:20px}
+      .documentation-toc li{padding:5px 0;color:#cbd8e5;font-size:14px;line-height:1.45}
+      .documentation-toc a{color:#fff;text-decoration:none}
+      .documentation-toc a:hover,.documentation-toc a:focus-visible{color:var(--green);text-decoration:underline}
+      .documentation-table{width:100%;table-layout:fixed;border-collapse:collapse;margin:8px 0 28px;color:var(--ink);font-size:15px;overflow-wrap:anywhere}
+      .documentation-table th,.documentation-table td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+      .documentation-table th{background:#edf4f8;color:var(--navy);font-weight:900}
+      .documentation-table tr:nth-child(even) td{background:#fbfdfe}
+      .documentation-content strong{color:var(--navy)}
+      @media(max-width:820px){.documentation-layout{grid-template-columns:1fr}.documentation-toc{order:-1}.documentation-body{padding:44px 0 64px}}
+      @media(max-width:560px){.documentation-content{padding:24px 20px;border-radius:18px}.documentation-content p{font-size:16px}.documentation-content section+section{margin-top:42px;padding-top:38px}.documentation-table{font-size:13px}.documentation-table th,.documentation-table td{padding:9px 8px}}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="GCS home">
+          <img src="gcs-logo.png" alt="Global Commerce and Services">
+        </a>
+        <button class="mobile-toggle" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html" data-active-pages="index.html">Home</a>
+          <a href="about.html" data-active-pages="about.html">Company</a>
+          <details class="nav-dropdown">
+            <summary>Joint Ventures</summary>
+            <div class="nav-dropdown-menu">
+              <a href="joint-ventures.html">Overview</a>
+              <a href="gcnis.html">GCNIS</a>
+              <a href="aagcs.html">AAGCS</a>
+            </div>
+          </details>
+          <a href="capabilities.html" data-active-pages="capabilities.html">Capabilities</a>
+          <a href="contracts.html" data-active-pages="contracts.html baltimore-itcats.html gsa-mas.html maryland-cats.html mda-shield.html oasis-plus.html seaport-nxg.html sewp-vi.html stars-iii.html">Contracts</a>
+          <a href="customers.html" data-active-pages="customers.html">Customers</a>
+          <a href="experience.html" data-active-pages="experience.html">Experience</a>
+          <a href="news.html" data-active-pages="news.html">News</a>
+          <a href="careers.html" data-active-pages="careers.html">Careers</a>
+          <a href="contact.html" data-active-pages="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="documentation-hero">
+        <div class="container">
+          <div class="eyebrow">Website handover guide</div>
+          <h1>GCS Website Documentation</h1>
+          <div class="documentation-frontmatter"><span>By Runell Ricks Jr.</span><span>Published August 27 2026</span></div>
+        </div>
+      </section>
+
+      <section class="documentation-body">
+        <div class="container documentation-layout">
+          <article class="documentation-content">
+            <section id="overview">
+              <p>This documentation details the technology stack and means of deployment of the website <em>globalcommserv.com</em>, accessible at <a href="https://globalcommserv.com/">https://globalcommserv.com/</a>. This is intended as a basic handover document to be read by employees of Global Commerce and Services LLC, and is not wholly inclusive documentation on Github, GitHub Pages, GoDaddy, or the website codebase of <em>globalcommserv.com</em>.</p>
+            </section>
+
+            <section id="codebase">
+              <h2>Codebase</h2>
+              <p>The website uses an AI-generated codebase ideated by Mr. David Shephard, using an unknown AI model. Due to the codebase being AI-generated, much of its syntax and organization are round-about and redundant - these qualities must be taken into account when hand-modifying webpages. Many webpage elements are nested in multiple layers of wrapped elements, which increases complexity as to which specific elements are affected by which CSS properties.</p>
+              <p>The codebase uses no external libraries or frameworks, and simply uses the standard CSS and JS functionality as defined within the project files. The website's associated .css stylesheets and .js script are all located at the project root, alongside the .html webpages and other assets.</p>
+              <p>Additionally, each .html webpage is written and defined individually. The website codebases do not use any standardized partials, and every facet of the webpage (header, footer, menus, etc.) are defined bespoke within each .html file.</p>
+              <p>The project includes two code partials, <em>header.html</em> and <em>footer.html</em>, but neither partials are invoked in any .html webpage. These were made as part of an experiment to introduce partials into the codebase, but these efforts were unsuccessful, and the partials were left in case future efforts are made.</p>
+              <p>The website codebase is, conceptually, simple and straightforward. Everything is defined at the project root with no subfolders or other directories, and everything is self-contained; there are no libraries, partials, or overhead. While this makes modifications brutally straightforward, it also does not leverage time-saving frameworks like tailwindcss or reactjs.</p>
+              <p>Due to the very decentralized nature of the project's files and functionality, it's recommended to use another AI model to read and write into the codebase to better modify the motley of project folders. It is also recommended for a human developer to streamline and truncate codebase when applicable, to increase human legibility of codebase.</p>
+            </section>
+
+            <section id="files-assets">
+              <h2>Files &amp; Asset Placement</h2>
+              <p>All of the webpages, including the homepage “index.html” are all parented to the project itself - i.e. they are not contained in any subfolders. Neither are the site resources located in any subfolders, and are also parented to the root, sibling to the webpage .html files themselves.</p>
+              <p>This simplified layout that <em>globalcommserv.com</em> uses is important to consider, as all asset references invoked within the webpage files are relative to each file - i.e. calls upon sibling assets. An .html file calls upon an image that is located adjacent to the .html file itself, or calls upon a stylesheet adjacent to the .html file itself. If that image or stylesheet was stored in a sub-folder, the webpage will break.</p>
+              <p>So, if any additional images or assets were to be added, they should be added directly to the project root, alongside all the other current files. Nor should any present assets be moved, lest drastic changes should be made to every content element within each .html webpage.</p>
+            </section>
+
+            <section id="hosting-version-control">
+              <h2>Hosting &amp; Version Control</h2>
+              <p>Github Pages is the means of website hosting and version control. Github is a software development service and pseudo-cloud storage provider. The service uses Git, a version control system that tracks all changes in a software project. Git is useful for tracking various changes in a project, and allows developers to rollback changes or merge different versions together.</p>
+              <p>The website codebase for <em>globalcommserv.com</em> is uploaded as a repository to Github, accessible at <a href="https://github.com/globalcommserv/globalcommserv.github.io">https://github.com/globalcommserv/globalcommserv.github.io</a>. And, as a repository, its entire history of changes is tracked by Git. This makes it easy to rollback changes and revert to a previous build, which is useful when encountering errors or conducting troubleshooting.</p>
+              <p>Additionally, Github offers a service to deploy repositories as live websites called Github Pages. This is the means that globalcommserv.com is currently published.</p>
+              <p>Tangentially, the aforementioned layout of files and assets are important to the context of Github Pages. Because <em>index.html</em> and associated .html files are defined at the root (i.e. immediately in the repository and not in subsequent folders), the website can be deployed from the project root or repository root.</p>
+              <p>This is an important navigational distinction, as different websites have different layouts for their organization of assets and resources. Many Github Pages websites house their assets (images, cascading stylesheets, and javascripts) into subfolders; others may deploy from subfolders entirely (ex. The “/docs” directory), which can be configured in the Pages section of the repository settings.</p>
+              <p>However, the largest concern to note is that the website repository of public on Github. Github Pages are free for public repositories, but to public repositories are open for all users to fork, clone, and modify for their own use. Though the main <em>globalcommserv.github.io</em> repository itself cannot be modified by anyone, it does mean that anyone can clone the website code and create impostor websites.</p>
+              <p>The easiest remedy is to simply make the repository private. However, this would disable the Github Pages deployment without a GitHub subscription plan, like Pro or Enterprise. Thus, the easiest remedy will require purchasing a subscription.</p>
+            </section>
+
+            <section id="domain">
+              <h2>Domain</h2>
+              <p>The website is reachable through two URLs: <em>globalcommserv.github.io</em> and <em>globalcommserv.com</em>.</p>
+              <h3>“.github.io” Domain</h3>
+              <p><em>globalcommserv.github.io</em> is, as denoted by the domain, the default URL provided by Github Pages itself. This default URL provided by Pages is typically a subdomain parented to the user or organization that owns the repository. For example, the prototype website was stored in the repository “gcs_proto3” which is owned by Github user ricks4, hence the URL provided by Github Pages is <em>rricks4.github.io/gcs_proto3</em>. However, because the repository of the <em>globalcommserv</em> website is itself called <em>globalcommserv.github.io</em> (<a href="https://github.com/globalcommserv/globalcommserv.github.io">https://github.com/globalcommserv/globalcommserv.github.io</a>), and owned by the Github organization “globalcommserv”, the default URL is thusly <em>globalcommserv.github.io</em>.</p>
+              <h3>“.com” Domain</h3>
+              <p>In contrast, the domain <em>globalcommserv.com</em> is provided by a third-party: GoDaddy.</p>
+              <p>GoDaddy is an online domain provider and website builder. This was the service that formally hosted the original <em>globalcommserv.com</em> website, which used the archaic GoDaddy website builder using the Website+Marketing plan. The old website is no longer in use, and the domain instead routes to content hosted at <em>globalcommserv.github.io</em>.</p>
+              <p>This is accomplished through changing the domain's DNS configuration. This can be found within the <em>globalcommserv.com</em> product page, under the “Domain” submenu, going under the “DNS” tab, then looking under the “DNS Records” section. This section lists the various DNS configurations associated with <em>globalcommserv.com</em>.</p>
+              <p>The configurations that link the <em>globalcommserv.com</em> domain to the website hosted at Github Pages are the following entries:</p>
+              <table class="documentation-table">
+                <thead>
+                  <tr><th scope="col">Type</th><th scope="col">Host</th><th scope="col">Points to</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>A</td><td>@</td><td>185.199.108.153</td></tr>
+                  <tr><td>A</td><td>@</td><td>185.199.109.153</td></tr>
+                  <tr><td>A</td><td>@</td><td>185.199.110.153</td></tr>
+                  <tr><td>A</td><td>@</td><td>185.199.111.153</td></tr>
+                  <tr><td>CNAME</td><td>www</td><td>globalcommserv.github.io</td></tr>
+                </tbody>
+              </table>
+              <p>Note that these records are scattered amongst all the other pre-existing DNS records. The four “A” type records reference IP addresses to Github, whilst the “CNAME” type record references the default Github Pages domain for the GCS website.</p>
+              <p>It is not recommended to edit these records, as they are vital to guarantee the DNS connection between the GoDaddy domain and the Github Pages website content.</p>
+              <p>However, within the GoDaddy products page accessed by Mrs. Joaneane Smith, the <em>globalcommserv.com</em> domain should <strong>NOT</strong> be mistaken for the “Global Comm Serv” website (<em>globalcommserv.godaddysites.com</em>). The latter product, “Global Comm Serv”, is a website using GoDaddy's new website framework, not connected to the <em>globalcommserv.com</em> domain.</p>
+            </section>
+
+            <section id="closing">
+              <h2>In Closing</h2>
+              <p>Although topically complicated and spread out across two services doing three different things, the technologies behind the new <em>globalcommserv.com</em> website are fairly simple. It just uses two third-parties - Github and GoDaddy - that manage everything. Github holds the code, GoDaddy holds the .com domain. That's it. All other functionality branches from there.</p>
+              <p>Once again, I thank the management at GCS for having me on board. It was a great experience to take part in this endeavor and get my elbows deep into work experience with a real live software project, and to see our work deploy live to represent this great company. I'd love to keep in touch and collaborate in the future.</p>
+              <p>If you all need additional help with the codebase or have any questions, don't hesitate to ask.</p>
+              <p>Very Respectfully,</p>
+              <p>Runell Ricks Jr.</p>
+            </section>
+          </article>
+
+          <aside class="documentation-toc">
+            <h2>Table of contents</h2>
+            <ol>
+              <li><a href="#overview">Overview</a></li>
+              <li><a href="#codebase">Codebase</a></li>
+              <li><a href="#files-assets">Files &amp; Asset Placement</a></li>
+              <li><a href="#hosting-version-control">Hosting &amp; Version Control</a></li>
+              <li><a href="#domain">Domain</a></li>
+              <li><a href="#closing">In Closing</a></li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <img src="gcs-logo.png" alt="GCS">
+          <p style="margin-top:16px;max-width:460px;">Mission-critical IT, cybersecurity, engineering, and professional services for federal agencies.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="capabilities.html">Capabilities</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="contract-vehicles.html">Contract Vehicles</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Corporate Information</h4>
+          <p>UEI: W3BEMK548CF3</p>
+          <p>CAGE: 1PJR2</p>
+          <p>Headquarters: Harvey, Louisiana</p>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        © <span data-year></span> Global Commerce and Services, LLC. All rights reserved.
+        <br>
+        The appearance of U.S. Department of Defense (DOD) Visual Information does not imply or constitute DOD endorsement.
+      </div>
+    </footer>
+    <script src="main.js?v=40"></script>
+  </body>
+</html>
